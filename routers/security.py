@@ -1,13 +1,28 @@
-from fastapi import APIRouter, status
+from fastapi import APIRouter, HTTPException, status, Depends
 from fastapi.responses import JSONResponse
-from utils.common import convert_response_to_json
+from fastapi.security import HTTPBasic, HTTPBasicCredentials
+from utils.common import convert_response_to_json, validate_credentials
+
 
 
 router = APIRouter()
+security = HTTPBasic() # Simple HTTP Basic Auth
+
+
+def validate(credentials: HTTPBasicCredentials = Depends(security)):
+    is_valid = validate_credentials(credentials.username, credentials.password)
+    if is_valid:
+        return True
+    else:
+        raise HTTPException(
+            status_code=status.HTTP_401_UNAUTHORIZED,
+            detail="Incorrect email or password",
+            headers={"WWW-Authenticate": "Basic"},
+        )
 
 
 @router.get('/sample', response_description='Get sample')
-async def get_all_notes():
+async def check_api_security(valid: bool = Depends(validate)):
     try:
         payload = {
             'message': 'Successfully retrieved resource',
