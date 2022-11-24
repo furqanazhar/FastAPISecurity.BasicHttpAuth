@@ -6,7 +6,7 @@ Windows 11 Home
 
 # Start Web Server
 Run below command in terminal from project root directory<br>
-python main.py
+``python main.py``
 
 ``http://localhost:8000/docs``
 
