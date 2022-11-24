@@ -5,7 +5,7 @@ Python FastAPI framework to enhance security
 Windows 11 Home
 
 # Start Web Server
-Run below command in terminal from project root directory
+Run below command in terminal from project root directory<br>
 python main.py
 
 ``http://localhost:8000/docs``
