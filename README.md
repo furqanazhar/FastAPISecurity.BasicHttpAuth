@@ -8,5 +8,5 @@ Windows 11 Home
 Run below command in terminal from project root directory<br>
 ``python main.py``
 
-Open below link in browser to starting using swagger and testing its features
+Open below link in browser to starting using swagger and testing its features<br>
 ``http://localhost:8000/docs``
